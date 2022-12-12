@@ -1,5 +1,10 @@
 import { HomeContainer } from './home.styles'
+import ProfileCard from './ProfileCard/profile-card.component'
 
 export default function Home(): JSX.Element {
-  return <HomeContainer>Index</HomeContainer>
+  return (
+    <HomeContainer>
+      <ProfileCard />
+    </HomeContainer>
+  )
 }

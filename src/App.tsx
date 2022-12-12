@@ -1,9 +1,13 @@
+import { ThemeProvider } from 'styled-components'
 import Router from './Routes'
+import { GlobalStyle } from './styles/global'
+import { defaultTheme } from './styles/themes/default'
 
 export default function App(): JSX.Element {
   return (
-    <div>
+    <ThemeProvider theme={defaultTheme}>
       <Router />
-    </div>
+      <GlobalStyle />
+    </ThemeProvider>
   )
 }
