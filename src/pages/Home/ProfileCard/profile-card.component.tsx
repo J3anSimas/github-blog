@@ -27,7 +27,7 @@ export default function ProfileCard(): JSX.Element {
           >
             <span>GITHUB</span>
             <FontAwesomeIcon icon={faArrowUpRightFromSquare} />
-          </a>{' '}
+          </a>
         </span>
         <p>
           Tristique volutpat pulvinar vel massa, pellentesque egestas. Eu

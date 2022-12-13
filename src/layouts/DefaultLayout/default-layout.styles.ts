@@ -8,4 +8,5 @@ export const DefaultLayoutContainer = styled.div`
 `
 export const LayoutContent = styled.div`
   width: 54rem;
+  margin-top: -5.5rem;
 `

@@ -7,7 +7,6 @@ export const ProfileCardContainer = styled.div`
   padding: 2rem;
   padding-left: 2.5rem;
   border-radius: 10px;
-  margin-top: -5.5rem; ;
 `
 export const ProfilePicContainer = styled.div`
   width: 148px;
@@ -24,7 +23,7 @@ export const ProfilePicContainer = styled.div`
 export const ProfileInfo = styled.section`
   display: flex;
   flex-direction: column;
-  gap: 0.5rem;
+  justify-content: space-around;
   & span:first-child {
     display: flex;
     justify-content: space-between;
