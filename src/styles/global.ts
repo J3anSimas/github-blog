@@ -16,5 +16,8 @@ export const GlobalStyle = createGlobalStyle`
     font-size: 1rem;
     line-height: 1.6;
   }
+  a {
+    text-decoration: none;
+  }
 
 `
