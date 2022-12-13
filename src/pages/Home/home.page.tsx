@@ -26,7 +26,7 @@ export default function Home(): JSX.Element {
         q: `${query !== '' ? query : ' '}repo:j3ansimas/github-blog is:issue`
       },
       headers: {
-        Authorization: `Bearer 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`
+        Authorization: `Bearer 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`
       }
     })
     return response.data
