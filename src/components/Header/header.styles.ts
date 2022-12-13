@@ -6,7 +6,6 @@ export const HeaderContainer = styled.header`
   justify-content: space-between;
   align-items: center;
   height: 18.5rem;
-  border: 1px solid red;
   object-fit: cover;
   background-image: url(${HeaderCover});
   background-repeat: no-repeat;

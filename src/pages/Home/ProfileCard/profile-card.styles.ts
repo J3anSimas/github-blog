@@ -6,22 +6,26 @@ export const ProfileCardContainer = styled.div`
   gap: 2rem;
   padding: 2rem;
   padding-left: 2.5rem;
+  border-radius: 10px;
+  margin-top: -5.5rem; ;
 `
 export const ProfilePicContainer = styled.div`
   width: 148px;
   height: 148px;
   background: white;
+  border-radius: 8px;
   img {
     max-width: 100%;
     max-height: 100%;
     object-fit: contain;
+    border-radius: 8px;
   }
 `
 export const ProfileInfo = styled.section`
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
-  & > span {
+  & span:first-child {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -46,5 +50,33 @@ export const ProfileInfo = styled.section`
     font-size: 1rem;
     width: 38.25rem;
     color: ${(props) => props.theme.colors.baseText};
+  }
+`
+export const Status = styled.section`
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  section {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+
+    & > span {
+      display: flex;
+      gap: 0.5rem;
+      align-items: center;
+
+      svg {
+        width: 18px;
+        height: 18px;
+        color: ${(props) => props.theme.colors.baseLabel};
+      }
+
+      span {
+        display: flex;
+        align-items: center;
+        color: ${(props) => props.theme.colors.baseSubtitle};
+      }
+    }
   }
 `

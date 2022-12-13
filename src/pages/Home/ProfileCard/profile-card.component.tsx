@@ -1,7 +1,8 @@
 import {
   ProfileCardContainer,
   ProfileInfo,
-  ProfilePicContainer
+  ProfilePicContainer,
+  Status
 } from './profile-card.styles'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {
@@ -9,12 +10,12 @@ import {
   faBuilding,
   faUserGroup
 } from '@fortawesome/free-solid-svg-icons'
-import {} from '@fortawesome/fontawesome-svg-core'
+import { faGithub } from '@fortawesome/free-brands-svg-icons'
 export default function ProfileCard(): JSX.Element {
   return (
     <ProfileCardContainer>
       <ProfilePicContainer>
-        {/* <img src="https://github.com/j3ansimas.png" alt="" /> */}
+        <img src="https://github.com/j3ansimas.png" alt="" />
       </ProfilePicContainer>
       <ProfileInfo>
         <span>
@@ -33,21 +34,26 @@ export default function ProfileCard(): JSX.Element {
           viverra massa quam dignissim aenean malesuada suscipit. Nunc, volutpat
           pulvinar vel mass.
         </p>
-        <section>
-          <span>j3ansimas</span>
-        </section>
-        <section>
-          <span>
-            <FontAwesomeIcon icon={faBuilding} />
-            Rocketseat
-          </span>
-        </section>
-        <section>
-          <span>
-            <FontAwesomeIcon icon={faUserGroup} />
-            32 seguidores
-          </span>
-        </section>
+        <Status>
+          <section>
+            <span>
+              <FontAwesomeIcon icon={faGithub} />
+              <span>j3ansimas</span>
+            </span>
+          </section>
+          <section>
+            <span>
+              <FontAwesomeIcon icon={faBuilding} />
+              <span>Rocketseat</span>
+            </span>
+          </section>
+          <section>
+            <span>
+              <FontAwesomeIcon icon={faUserGroup} />
+              <span>32 seguidores</span>
+            </span>
+          </section>
+        </Status>
       </ProfileInfo>
     </ProfileCardContainer>
   )
