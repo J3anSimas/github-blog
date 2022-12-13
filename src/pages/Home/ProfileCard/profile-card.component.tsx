@@ -11,15 +11,30 @@ import {
   faUserGroup
 } from '@fortawesome/free-solid-svg-icons'
 import { faGithub } from '@fortawesome/free-brands-svg-icons'
+import { useQuery } from 'react-query'
+import axios from 'axios'
+
+export type TProfileData = {
+  login: string
+  name: string
+  bio: string
+  avatar_url: string
+  company: string
+  followers: number
+}
 export default function ProfileCard(): JSX.Element {
+  const { data } = useQuery<TProfileData>('profile', async () => {
+    const response = await axios.get('https://api.github.com/users/j3ansimas')
+    return response.data
+  })
   return (
     <ProfileCardContainer>
       <ProfilePicContainer>
-        <img src="https://github.com/j3ansimas.png" alt="" />
+        <img src={data?.avatar_url} />
       </ProfilePicContainer>
       <ProfileInfo>
         <span>
-          <h1>Jean Simas</h1>
+          <h1>{data?.name}</h1>
           <a
             href="http://github.com/j3ansimas"
             target="_blank"
@@ -29,28 +44,24 @@ export default function ProfileCard(): JSX.Element {
             <FontAwesomeIcon icon={faArrowUpRightFromSquare} />
           </a>
         </span>
-        <p>
-          Tristique volutpat pulvinar vel massa, pellentesque egestas. Eu
-          viverra massa quam dignissim aenean malesuada suscipit. Nunc, volutpat
-          pulvinar vel mass.
-        </p>
+        <p>{data?.bio}</p>
         <Status>
           <section>
             <span>
               <FontAwesomeIcon icon={faGithub} />
-              <span>j3ansimas</span>
+              <span>{data?.login}</span>
             </span>
           </section>
           <section>
             <span>
               <FontAwesomeIcon icon={faBuilding} />
-              <span>Rocketseat</span>
+              <span>{data?.company ?? 'Procurando emprego'}</span>
             </span>
           </section>
           <section>
             <span>
               <FontAwesomeIcon icon={faUserGroup} />
-              <span>32 seguidores</span>
+              <span>{data?.followers} seguidores</span>
             </span>
           </section>
         </Status>
