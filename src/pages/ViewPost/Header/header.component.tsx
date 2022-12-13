@@ -7,32 +7,49 @@ import {
   faCalendarDay
 } from '@fortawesome/free-solid-svg-icons'
 import { faGithub } from '@fortawesome/free-brands-svg-icons'
-export default function Header(): JSX.Element {
+import { NavLink } from 'react-router-dom'
+import { FormatDistanceFromDate } from '../../../utils/formatDistanceFromDate'
+
+type HeaderProps = {
+  title: string
+  createdAt: Date
+  user: string
+  comments: number
+  htmlLink: string
+}
+
+export default function Header({
+  title,
+  createdAt,
+  user,
+  comments,
+  htmlLink
+}: HeaderProps): JSX.Element {
   return (
     <HeaderContainer>
       <nav>
-        <a href="#">
+        <NavLink to="/">
           <FontAwesomeIcon icon={faChevronLeft} />
           <span>VOLTAR</span>
-        </a>
-        <a href="#">
+        </NavLink>
+        <a href={htmlLink} target="_blank" rel="noreferrer">
           <span>VER NO GITHUB</span>
           <FontAwesomeIcon icon={faArrowUpRightFromSquare} />
         </a>
       </nav>
-      <h1>JavaScript data types and data structures</h1>
+      <h1>{title}</h1>
       <section>
         <span>
           <FontAwesomeIcon icon={faGithub} />
-          <span>j3ansimas</span>
+          <span>{user}</span>
         </span>
         <span>
           <FontAwesomeIcon icon={faCalendarDay} />
-          <span>Há 1 dia</span>
+          <span>{FormatDistanceFromDate(createdAt)}</span>
         </span>
         <span>
           <FontAwesomeIcon icon={faComment} />
-          <span>5 Comentários</span>
+          <span>{comments} Comentários</span>
         </span>
       </section>
     </HeaderContainer>
