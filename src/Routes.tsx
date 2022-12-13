@@ -1,6 +1,7 @@
 import { Routes, Route, BrowserRouter } from 'react-router-dom'
 import DefaultLayout from './layouts/DefaultLayout/default-layout.layout'
 import Home from './pages/Home/home.page'
+import ViewPost from './pages/ViewPost/view-post.pages'
 
 export default function Router(): JSX.Element {
   return (
@@ -8,7 +9,7 @@ export default function Router(): JSX.Element {
       <Routes>
         <Route path="/" element={<DefaultLayout />}>
           <Route path="/" element={<Home />} />
-          <Route path="/post/:id" element={<h1>Post</h1>} />
+          <Route path="/post/:id" element={<ViewPost />} />
         </Route>
       </Routes>
     </BrowserRouter>
