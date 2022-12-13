@@ -26,7 +26,7 @@ export const PostItemCardContainer = styled.li`
       color: ${(props) => props.theme.colors.baseSpan};
     }
   }
-  p {
+  span {
     display: -webkit-box;
     -webkit-line-clamp: 4;
     -webkit-box-orient: vertical;
@@ -34,5 +34,8 @@ export const PostItemCardContainer = styled.li`
     overflow: hidden;
 
     color: ${(props) => props.theme.colors.baseText};
+    a {
+      color: ${(props) => props.theme.colors.blue};
+    }
   }
 `
