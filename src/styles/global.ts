@@ -7,7 +7,8 @@ export const GlobalStyle = createGlobalStyle`
     font-family: 'Nunito', sans-serif;
   }
   body {
-    background: ${(props) => props.theme.colors.baseBackground}
+    background: ${(props) => props.theme.colors.baseBackground};
+    overflow-x: hidden;
   }
   body, input, select, textarea, button {
     font-family: 'Nunito', sans-serif;
