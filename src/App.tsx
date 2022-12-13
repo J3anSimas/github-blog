@@ -4,7 +4,13 @@ import { GlobalStyle } from './styles/global'
 import { defaultTheme } from './styles/themes/default'
 import { QueryClientProvider, QueryClient } from 'react-query'
 
-const queryClient = new QueryClient()
+const queryClient = new QueryClient({
+  defaultOptions: {
+    queries: {
+      refetchOnWindowFocus: false
+    }
+  }
+})
 export default function App(): JSX.Element {
   return (
     <ThemeProvider theme={defaultTheme}>
