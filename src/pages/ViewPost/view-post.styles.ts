@@ -1,6 +1,17 @@
 import styled from 'styled-components'
 
-export const ViewPostContainer = styled.div``
+export const ViewPostContainer = styled.div`
+  .loading-container {
+    display: flex;
+    justify-content: center;
+    height: 20rem;
+    svg {
+      width: 4rem;
+      height: 4rem;
+      color: ${(props) => props.theme.colors.baseTitle};
+    }
+  }
+`
 
 export const BodyPostContainer = styled.main`
   padding: 2.4rem 2rem;

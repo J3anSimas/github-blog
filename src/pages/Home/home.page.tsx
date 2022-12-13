@@ -1,6 +1,7 @@
 import axios from 'axios'
 import React, { useState } from 'react'
 import { useQuery, useQueryClient } from 'react-query'
+import Loading from '../../components/Loading/loading.component'
 import { HomeContainer, HomeContent, PostListContainer } from './home.styles'
 import PostItemCard from './PostItemCard/post-item-card.component'
 import ProfileCard from './ProfileCard/profile-card.component'
@@ -47,7 +48,11 @@ export default function Home(): JSX.Element {
         <form onSubmit={async (e) => await handleSubmitForm(e)}>
           <div>
             <h2>Publicações</h2>
-            <span>{data?.total_count} publicações</span>
+            {isFetching ? (
+              <Loading />
+            ) : (
+              <span>{data?.total_count} publicações</span>
+            )}
           </div>
           <input
             type="text"
@@ -58,7 +63,7 @@ export default function Home(): JSX.Element {
         </form>
         <PostListContainer>
           {isFetching ? (
-            <span>Loading</span>
+            <Loading />
           ) : (
             data?.items.map(({ id, number, title, created_at, body }) => (
               <PostItemCard

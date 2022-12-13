@@ -4,6 +4,7 @@ import ReactMarkdown from 'react-markdown'
 import { useParams } from 'react-router'
 import { useQuery } from 'react-query'
 import axios from 'axios'
+import Loading from '../../components/Loading/loading.component'
 
 type TPostFull = {
   html_url: string
@@ -25,15 +26,22 @@ export default function ViewPost(): JSX.Element {
   })
   return (
     <ViewPostContainer>
-      {data != null ? (
+      {isFetching ? (
+        <Loading />
+      ) : (
         <>
-          <Header
-            comments={data?.comments}
-            createdAt={new Date(data.created_at)}
-            htmlLink={data.html_url}
-            title={data.title}
-            user={data.user.login}
-          />
+          {data != null ? (
+            <Header
+              comments={data.comments}
+              createdAt={new Date(data.created_at)}
+              htmlLink={data.html_url}
+              title={data.title}
+              user={data.user.login}
+            />
+          ) : (
+            <Loading />
+          )}
+
           <BodyPostContainer>
             {isFetching ? (
               <span>Loading</span>
@@ -42,8 +50,6 @@ export default function ViewPost(): JSX.Element {
             )}
           </BodyPostContainer>
         </>
-      ) : (
-        <span>Loading</span>
       )}
     </ViewPostContainer>
   )

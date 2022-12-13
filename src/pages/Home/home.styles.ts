@@ -19,6 +19,10 @@ export const HomeContent = styled.main`
       h2 {
         font-size: 18px;
       }
+      .loading-container {
+        width: 3rem;
+        height: 3rem;
+      }
     }
     input {
       background: ${(props) => props.theme.colors.baseInput};
@@ -36,6 +40,18 @@ export const HomeContent = styled.main`
 
 export const PostListContainer = styled.ul`
   display: grid;
+  width: 100%;
   grid-template-columns: repeat(2, 1fr);
   grid-gap: 2rem;
+  .loading-container {
+    display: flex;
+    grid-column-start: 1;
+    grid-column-end: 3;
+    justify-content: center;
+    svg {
+      height: 3rem;
+      width: 3rem;
+      color: ${(props) => props.theme.colors.baseTitle};
+    }
+  }
 `

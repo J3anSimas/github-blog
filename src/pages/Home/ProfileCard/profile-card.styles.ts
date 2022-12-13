@@ -7,6 +7,14 @@ export const ProfileCardContainer = styled.div`
   padding: 2rem;
   padding-left: 2.5rem;
   border-radius: 10px;
+
+  .loading-container {
+    svg {
+      color: ${(props) => props.theme.colors.baseTitle};
+      width: 2rem;
+      height: 2rem;
+    }
+  }
 `
 export const ProfilePicContainer = styled.div`
   width: 148px;
