@@ -24,9 +24,6 @@ export default function Home(): JSX.Element {
     const response = await axios.get('https://api.github.com/search/issues', {
       params: {
         q: `${query !== '' ? query : ' '}repo:j3ansimas/github-blog is:issue`
-      },
-      headers: {
-        Authorization: `Bearer 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`
       }
     })
     return response.data
