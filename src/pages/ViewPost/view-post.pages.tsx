@@ -1,24 +1,50 @@
 import Header from './Header/header.component'
-import { ViewPostContainer } from './view-post.styles'
+import { BodyPostContainer, ViewPostContainer } from './view-post.styles'
 import ReactMarkdown from 'react-markdown'
+import { useParams } from 'react-router'
+import { useQuery } from 'react-query'
+import axios from 'axios'
+
+type TPostFull = {
+  html_url: string
+  title: string
+  body: string
+  created_at: string
+  comments: number
+  user: {
+    login: string
+  }
+}
 export default function ViewPost(): JSX.Element {
+  const { id } = useParams()
+  const { data, isFetching } = useQuery<TPostFull>('post-full', async () => {
+    const response = await axios.get(
+      `https://api.github.com/repos/j3ansimas/github-blog/issues/${id ?? ''}`
+    )
+    return response.data
+  })
   return (
     <ViewPostContainer>
-      <Header />
-      <ReactMarkdown>
-        {`
-        Programming languages all have built-in data structures, but these often
-        differ from one language to another. This article attempts to list the
-        built-in data structures available in JavaScript and what properties
-        they have. These can be used to build other data structures. Wherever
-        possible, comparisons with other languages are drawn.\r\n\r\n[Dynamic
-        typing](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#dynamic_typing)\r\nJavaScript
-        is a loosely typed and dynamic language. Variables in JavaScript are not
-        directly associated with any particular value type, and any variable can
-        be assigned (and re-assigned) values of all types:\r\n\r\nlet foo = 42;
-        // foo is now a number\r\nfoo = 'bar'; // foo is now a string\r\nfoo =
-        true; // foo is now a boolean`}
-      </ReactMarkdown>
+      {data != null ? (
+        <>
+          <Header
+            comments={data?.comments}
+            createdAt={new Date(data.created_at)}
+            htmlLink={data.html_url}
+            title={data.title}
+            user={data.user.login}
+          />
+          <BodyPostContainer>
+            {isFetching ? (
+              <span>Loading</span>
+            ) : (
+              <ReactMarkdown>{data?.body ?? 'Loading'}</ReactMarkdown>
+            )}
+          </BodyPostContainer>
+        </>
+      ) : (
+        <span>Loading</span>
+      )}
     </ViewPostContainer>
   )
 }
